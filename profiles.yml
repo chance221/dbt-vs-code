@@ -1,0 +1,13 @@
+my_profile:
+  target: dev_snowflake
+  outputs:
+    dev_snowflake:
+      type: snowflake
+      user: "{{ env_var('SF_USER') }}"
+      password: "{{ env_var('SF_PASSWORD') }}"
+      account: "{{ env_var('SF_ACCOUNT') }}"
+      database: "{{ env_var('SF_DATABASE') }}"
+      schema: "{{ env_var('SF_SCHEMA') }}"
+      warehouse: "{{ env_var('SF_WAREHOUSE') }}"
+      role: "{{ env_var('SF_ROLE') }}"
+      threads: 4
