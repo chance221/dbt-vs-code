@@ -1,0 +1,6 @@
+packages:
+- package: dbt-labs/codegen
+  version: 0.13.1
+  # run dbt deps to install the package after adding it to your project
+  # then you can utilize codegen at hub.getdbt.com/dbt-labs/codegen/latest to generate source configs, models, and tests for you.
+  # run  dbt rub-operation generate_source --args 'schema_name: raw_jaffle_shop' to generrate source configs for all tables in the raw_jaffle_shop schema

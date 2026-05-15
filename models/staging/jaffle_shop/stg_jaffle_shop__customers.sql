@@ -2,5 +2,6 @@
 select
   id as customer_id,
   first_name,
-  lastname
-from raw.jaffle_shop.customers
+  last_name,
+  _etl_loaded_at
+from {{ source('jaffle_shop', 'customers') }}

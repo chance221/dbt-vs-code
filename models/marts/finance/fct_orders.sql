@@ -1,7 +1,6 @@
-with orders as (
-    select *
 
-  
+with orders as (
+    select *  
     from {{ ref('stg_jaffle_shop__orders')}}
 ),
 
@@ -13,7 +12,7 @@ payments as (
 sum_totals as (
   select
     orders.customer_id,
-    sum(case when status = 'success' then payments.amount end) as lifetime_value,
+    sum(case when status = 'completed' then payments.amount end) as lifetime_value,
   from orders
   left join payments using (order_id)
   group by orders.customer_id
@@ -21,14 +20,14 @@ sum_totals as (
 
 final as (
     select
-        orders.order_id,
+        order_id,
         orders.customer_id,
         orders.order_date,
         coalesce(sum_totals.lifetime_value, 0) as amount
 
     from orders
 
-    left join sum_totals using (order_id)
+    left join sum_totals using (customer_id)
 
 )
 
